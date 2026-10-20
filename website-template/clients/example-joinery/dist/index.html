@@ -1,0 +1,437 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Oakline Joinery | Carpenters in Guildford</title>
+<meta name="description" content="Fitted wardrobes, kitchens, staircases and bespoke joinery across Guildford and Surrey. Free quotes within one working day.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,700..800&family=Public+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --ink: #1e2422;
+  --ink-soft: #4a524f;
+  --paper: #f4f5f2;
+  --white: #ffffff;
+  --ply: #d8b88a;
+  --ply-dark: #9c7a4f;
+  --chalk: #2a5caa;
+  --chalk-dark: #1f4785;
+  --line: #cbd0ca;
+  --measure: 66ch;
+  --gutter: clamp(16px, 4vw, 48px);
+  --display: "Archivo", "Arial Narrow", sans-serif;
+  --body: "Public Sans", system-ui, sans-serif;
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--body);
+  font-size: 1.0625rem;
+  line-height: 1.6;
+}
+
+img { max-width: 100%; display: block; }
+a { color: var(--chalk); }
+a:hover { color: var(--chalk-dark); }
+:focus-visible { outline: 3px solid var(--chalk); outline-offset: 3px; }
+
+.wrap { max-width: 1160px; margin: 0 auto; padding: 0 var(--gutter); }
+
+/* Header */
+.site-header {
+  background: var(--white);
+  border-bottom: 1px solid var(--line);
+  position: sticky; top: 0; z-index: 10;
+}
+.site-header .wrap {
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 16px; min-height: 68px;
+}
+.brand {
+  font-family: var(--display);
+  font-stretch: 112%;
+  font-weight: 800;
+  font-size: 1.15rem;
+  color: var(--ink);
+  text-decoration: none;
+  line-height: 1.1;
+}
+.header-actions { display: flex; align-items: center; gap: 12px; }
+.header-phone { font-weight: 600; color: var(--ink); text-decoration: none; white-space: nowrap; }
+.header-phone:hover { color: var(--chalk); }
+
+/* Buttons */
+.btn {
+  display: inline-block;
+  font-family: var(--body);
+  font-weight: 700;
+  font-size: 1rem;
+  padding: 0.8em 1.3em;
+  border-radius: 4px;
+  text-decoration: none;
+  border: 2px solid var(--chalk);
+  cursor: pointer;
+  line-height: 1.2;
+}
+.btn-primary { background: var(--chalk); color: var(--white); }
+.btn-primary:hover { background: var(--chalk-dark); border-color: var(--chalk-dark); color: var(--white); }
+.btn-secondary { background: transparent; color: var(--chalk); }
+.btn-secondary:hover { background: var(--white); color: var(--chalk-dark); }
+.site-header .btn { padding: 0.6em 1em; }
+
+/* Hero */
+.hero { background: var(--white); }
+.hero .wrap {
+  display: grid;
+  grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr);
+  gap: clamp(24px, 4vw, 56px);
+  align-items: center;
+  padding-top: clamp(32px, 6vw, 72px);
+  padding-bottom: clamp(32px, 6vw, 72px);
+}
+.hero h1 {
+  font-family: var(--display);
+  font-stretch: 118%;
+  font-weight: 800;
+  font-size: clamp(2.2rem, 5.2vw, 4rem);
+  line-height: 1.02;
+  letter-spacing: -0.01em;
+  margin: 0 0 20px;
+}
+.hero p { font-size: 1.2rem; color: var(--ink-soft); max-width: 46ch; margin: 0 0 28px; }
+.hero-ctas { display: flex; flex-wrap: wrap; gap: 12px; }
+.hero-photo { border-radius: 6px; overflow: hidden; aspect-ratio: 4 / 3; background: var(--ply); }
+.hero-photo img { width: 100%; height: 100%; object-fit: cover; }
+
+/* The ruler: the one signature element */
+.ruler {
+  position: relative;
+  background-color: var(--ply);
+  background-image:
+    linear-gradient(90deg, var(--ink) 2px, transparent 2px),
+    linear-gradient(90deg, var(--ink) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(30, 36, 34, 0.55) 1px, transparent 1px);
+  background-size: 100px 22px, 50px 14px, 10px 8px;
+  background-repeat: repeat-x;
+  background-position: var(--gutter) 0, var(--gutter) 0, var(--gutter) 0;
+  border-top: 1px solid var(--ply-dark);
+  border-bottom: 1px solid var(--ply-dark);
+}
+.ruler .wrap {
+  padding-top: 34px;
+  padding-bottom: 16px;
+  font-family: var(--display);
+  font-stretch: 110%;
+  font-weight: 700;
+  font-size: clamp(1rem, 2.2vw, 1.3rem);
+}
+
+/* Sections */
+section { padding: clamp(48px, 8vw, 96px) 0; }
+section.alt { background: var(--white); }
+h2 {
+  font-family: var(--display);
+  font-stretch: 112%;
+  font-weight: 800;
+  font-size: clamp(1.8rem, 3.6vw, 2.6rem);
+  line-height: 1.1;
+  margin: 0 0 12px;
+}
+.section-intro { color: var(--ink-soft); max-width: var(--measure); margin: 0 0 36px; }
+
+/* Services: a list, not cards */
+.services {
+  list-style: none; margin: 0; padding: 0;
+  display: grid; grid-template-columns: repeat(2, minmax(0, 1fr));
+  column-gap: clamp(24px, 5vw, 64px);
+  border-top: 2px solid var(--ink);
+}
+.services li { padding: 20px 0; border-bottom: 1px solid var(--line); }
+.services h3 { font-size: 1.2rem; margin: 0 0 4px; }
+.services p { margin: 0; color: var(--ink-soft); }
+.services .from { display: block; margin-top: 6px; font-weight: 600; color: var(--ply-dark); }
+
+/* Gallery */
+.gallery {
+  display: grid; gap: 12px;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+.gallery figure { margin: 0; }
+.gallery img { width: 100%; height: auto; aspect-ratio: 1 / 1; object-fit: cover; border-radius: 4px; background: var(--ply); }
+.gallery figcaption { font-size: 0.9rem; color: var(--ink-soft); margin-top: 6px; }
+
+/* Reviews */
+.review-summary { font-weight: 600; margin: 0 0 28px; }
+.reviews {
+  display: grid; gap: clamp(20px, 3vw, 40px);
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+.reviews blockquote { margin: 0; padding-left: 18px; border-left: 3px solid var(--ply); }
+.reviews p { margin: 0 0 10px; font-size: 1.05rem; }
+.reviews cite { font-style: normal; font-weight: 600; color: var(--ink-soft); font-size: 0.95rem; }
+
+/* How it works: a real sequence, so it is numbered */
+.steps { list-style: none; margin: 0; padding: 0; counter-reset: step; display: grid; gap: 24px; grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.steps li { counter-increment: step; }
+.steps li::before {
+  content: counter(step);
+  display: block;
+  font-family: var(--display);
+  font-stretch: 118%;
+  font-weight: 800;
+  font-size: 2.6rem;
+  line-height: 1;
+  color: var(--chalk);
+  margin-bottom: 8px;
+}
+.steps h3 { margin: 0 0 4px; font-size: 1.15rem; }
+.steps p { margin: 0; color: var(--ink-soft); }
+
+/* Area */
+.areas { display: flex; flex-wrap: wrap; gap: 8px; list-style: none; padding: 0; margin: 0; }
+.areas li { background: var(--white); border: 1px solid var(--line); border-radius: 999px; padding: 6px 14px; font-size: 0.95rem; }
+
+/* Quote form */
+.quote .wrap { display: grid; grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr); gap: clamp(24px, 5vw, 64px); }
+.quote-aside p { color: var(--ink-soft); }
+.quote-aside .direct { font-weight: 600; color: var(--ink); }
+form { display: grid; gap: 16px; grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.field { display: grid; gap: 6px; }
+.field.full { grid-column: 1 / -1; }
+label { font-weight: 600; font-size: 0.95rem; }
+input, select, textarea {
+  font: inherit;
+  padding: 0.7em 0.8em;
+  border: 1px solid #9aa29d;
+  border-radius: 4px;
+  background: var(--white);
+  color: var(--ink);
+  width: 100%;
+}
+textarea { min-height: 130px; resize: vertical; }
+.hp { position: absolute; left: -9999px; }
+.form-note { grid-column: 1 / -1; font-size: 0.9rem; color: var(--ink-soft); margin: 0; }
+
+/* Footer */
+footer { background: var(--ink); color: #d7dbd8; padding: 40px 0; font-size: 0.95rem; }
+footer a { color: var(--white); }
+footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 16px; }
+footer p { margin: 0 0 6px; }
+
+/* Responsive */
+@media (max-width: 860px) {
+  .hero .wrap, .quote .wrap { grid-template-columns: 1fr; }
+  .reviews, .steps { grid-template-columns: 1fr; }
+  .gallery { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 600px) {
+  .services { grid-template-columns: 1fr; }
+  form { grid-template-columns: 1fr; }
+  .site-header .btn { display: none; }
+  .brand { font-size: 1rem; }
+}
+
+</style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "HomeAndConstructionBusiness",
+  "name": "Oakline Joinery",
+  "telephone": "+441632960123",
+  "email": "hello@oaklinejoinery.example",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "Unit 4, Example Trading Estate, Guildford, Surrey",
+    "addressCountry": "GB"
+  },
+  "areaServed": [
+    "Guildford",
+    "Godalming",
+    "Woking",
+    "Farnham",
+    "Cranleigh",
+    "Shalford",
+    "Ripley",
+    "Send"
+  ]
+}
+</script>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="wrap">
+    <a class="brand" href="#top">Oakline Joinery</a>
+    <div class="header-actions">
+      <a class="header-phone" href="tel:+441632960123">01632 960123</a>
+      <a class="btn btn-primary" href="#quote">Get a quote</a>
+    </div>
+  </div>
+</header>
+
+<main id="top">
+  <div class="hero">
+    <div class="wrap">
+      <div>
+        <h1>Fitted furniture and joinery, built in Guildford</h1>
+        <p>A team of six carpenters making wardrobes, kitchens, staircases and doors that fit your home properly. Free home visit and a written quote within three days.</p>
+        <div class="hero-ctas">
+          <a class="btn btn-primary" href="#quote">Get a free quote</a>
+          <a class="btn btn-secondary" href="tel:+441632960123">Call 01632 960123</a>
+        </div>
+      </div>
+      <div class="hero-photo">
+        <img src="images/placeholder-hero.svg" alt="Oak fitted wardrobe with sliding doors in a bedroom alcove" width="1200" height="900">
+      </div>
+    </div>
+  </div>
+
+  <div class="ruler" role="note">
+    <div class="wrap">Measured, quoted and fitted within 20 miles of Guildford</div>
+  </div>
+
+  <section id="services">
+    <div class="wrap">
+      <h2>What we build</h2>
+      <p class="section-intro">Everything is made to measure and fitted by our own team.</p>
+      <ul class="services">
+        <li><h3>Fitted wardrobes</h3><p>Alcove, loft and full-wall wardrobes with doors and interiors to suit.</p><span class="from">From £1,800</span></li>
+        <li><h3>Kitchens</h3><p>Bespoke kitchens, or fitting a kitchen you&#x27;ve already bought.</p><span class="from">From £6,500</span></li>
+        <li><h3>Staircases</h3><p>New staircases, spindle and handrail replacement, and repairs.</p><span class="from">From £2,200</span></li>
+        <li><h3>Doors and frames</h3><p>Internal doors hung, oak door packages and new frames.</p></li>
+        <li><h3>Media walls and shelving</h3><p>Built-in TV units, alcove shelving and storage.</p><span class="from">From £1,200</span></li>
+        <li><h3>Garden rooms and decking</h3><p>Timber decking, pergolas and small outbuildings.</p></li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="work" class="alt">
+    <div class="wrap">
+      <h2>Recent work</h2>
+      <p class="section-intro">A few jobs from the last year.</p>
+      <div class="gallery">
+        <figure><img src="images/placeholder-1.svg" alt="Oak alcove wardrobes, Godalming" loading="lazy" width="600" height="600"><figcaption>Oak alcove wardrobes, Godalming</figcaption></figure>
+        <figure><img src="images/placeholder-2.svg" alt="Shaker kitchen, Guildford" loading="lazy" width="600" height="600"><figcaption>Shaker kitchen, Guildford</figcaption></figure>
+        <figure><img src="images/placeholder-3.svg" alt="Open-tread staircase, Woking" loading="lazy" width="600" height="600"><figcaption>Open-tread staircase, Woking</figcaption></figure>
+        <figure><img src="images/placeholder-4.svg" alt="Media wall with floating shelves, Cranleigh" loading="lazy" width="600" height="600"><figcaption>Media wall with floating shelves, Cranleigh</figcaption></figure>
+        <figure><img src="images/placeholder-5.svg" alt="Loft eaves storage, Farnham" loading="lazy" width="600" height="600"><figcaption>Loft eaves storage, Farnham</figcaption></figure>
+        <figure><img src="images/placeholder-6.svg" alt="Hardwood decking, Shalford" loading="lazy" width="600" height="600"><figcaption>Hardwood decking, Shalford</figcaption></figure>
+      </div>
+    </div>
+  </section>
+
+  <section id="reviews">
+    <div class="wrap">
+      <h2>What customers say</h2>
+      <p class="review-summary">Reviews from recent customers.</p>
+      <div class="reviews">
+        <blockquote><p>Paste a real Google review here, ideally one that mentions the type of job and the town.</p><cite>Sample review, replace before launch</cite></blockquote>
+        <blockquote><p>Pick reviews that mention speed, tidiness or communication, since those are what new customers worry about.</p><cite>Sample review, replace before launch</cite></blockquote>
+        <blockquote><p>Three reviews is enough here; link to the full Google profile in the footer.</p><cite>Sample review, replace before launch</cite></blockquote>
+      </div>
+    </div>
+  </section>
+
+  <section id="how" class="alt">
+    <div class="wrap">
+      <h2>How it works</h2>
+      <p class="section-intro">From first message to finished job.</p>
+      <ol class="steps">
+        <li><h3>Send us the details</h3><p>Fill in the form or call us. Photos and rough sizes help.</p></li>
+        <li><h3>We visit and quote</h3><p>We measure up and send a written, itemised quote within three days.</p></li>
+        <li><h3>We build and fit</h3><p>We agree a start date, make everything in our workshop and fit it on site.</p></li>
+      </ol>
+    </div>
+  </section>
+
+  <section id="area">
+    <div class="wrap">
+      <h2>Areas we cover</h2>
+      <p class="section-intro">We work across Guildford and the surrounding towns and villages. Not sure if you&#x27;re covered? Just ask.</p>
+      <ul class="areas">
+        <li>Guildford</li>
+        <li>Godalming</li>
+        <li>Woking</li>
+        <li>Farnham</li>
+        <li>Cranleigh</li>
+        <li>Shalford</li>
+        <li>Ripley</li>
+        <li>Send</li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="quote" class="quote alt">
+    <div class="wrap">
+      <div class="quote-aside">
+        <h2>Get a free quote</h2>
+        <p>Tell us about the job and we'll get back to you within one working day.</p>
+        <p class="direct">Prefer to talk? Call <a href="tel:+441632960123">01632 960123</a> or email <a href="mailto:hello@oaklinejoinery.example">hello@oaklinejoinery.example</a>.</p>
+      </div>
+      <form action="mailto:hello@oaklinejoinery.example" method="POST" enctype="text/plain">
+        <div class="field">
+          <label for="f-name">Your name</label>
+          <input id="f-name" name="name" autocomplete="name" required>
+        </div>
+        <div class="field">
+          <label for="f-phone">Phone number</label>
+          <input id="f-phone" name="phone" type="tel" autocomplete="tel" required>
+        </div>
+        <div class="field">
+          <label for="f-email">Email</label>
+          <input id="f-email" name="email" type="email" autocomplete="email">
+        </div>
+        <div class="field">
+          <label for="f-postcode">Postcode</label>
+          <input id="f-postcode" name="postcode" autocomplete="postal-code" required>
+        </div>
+        <div class="field full">
+          <label for="f-job">Type of job</label>
+          <select id="f-job" name="job_type">
+            <option>Fitted wardrobes</option>
+            <option>Kitchens</option>
+            <option>Staircases</option>
+            <option>Doors and frames</option>
+            <option>Media walls and shelving</option>
+            <option>Garden rooms and decking</option>
+            <option>Something else</option>
+          </select>
+        </div>
+        <div class="field full">
+          <label for="f-details">About the job</label>
+          <textarea id="f-details" name="details" placeholder="Rough sizes, materials, and when you'd like it done"></textarea>
+        </div>
+        <input class="hp" type="text" name="_gotcha" tabindex="-1" autocomplete="off" aria-hidden="true">
+        <div class="field full">
+          <button class="btn btn-primary" type="submit">Request a quote</button>
+        </div>
+        <p class="form-note">We only use your details to reply about your job.</p>
+      </form>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div>
+      <p><strong>Oakline Joinery</strong></p>
+      <p>Unit 4, Example Trading Estate, Guildford, Surrey</p>
+      <p><a href="tel:+441632960123">01632 960123</a> · <a href="mailto:hello@oaklinejoinery.example">hello@oaklinejoinery.example</a></p>
+    </div>
+    <div>
+
+      <p>© 2026 Oakline Joinery Ltd</p>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

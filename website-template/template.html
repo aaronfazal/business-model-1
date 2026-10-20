@@ -1,0 +1,161 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{{title}}</title>
+<meta name="description" content="{{meta_description}}">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,700..800&family=Public+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+{{css}}
+</style>
+<script type="application/ld+json">
+{{schema}}
+</script>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="wrap">
+    <a class="brand" href="#top">{{business_name}}</a>
+    <div class="header-actions">
+      <a class="header-phone" href="tel:{{phone_link}}">{{phone}}</a>
+      <a class="btn btn-primary" href="#quote">Get a quote</a>
+    </div>
+  </div>
+</header>
+
+<main id="top">
+  <div class="hero">
+    <div class="wrap">
+      <div>
+        <h1>{{headline}}</h1>
+        <p>{{intro}}</p>
+        <div class="hero-ctas">
+          <a class="btn btn-primary" href="#quote">Get a free quote</a>
+          <a class="btn btn-secondary" href="tel:{{phone_link}}">Call {{phone}}</a>
+        </div>
+      </div>
+      <div class="hero-photo">
+        <img src="{{hero_image}}" alt="{{hero_alt}}" width="1200" height="900">
+      </div>
+    </div>
+  </div>
+
+  <div class="ruler" role="note">
+    <div class="wrap">{{area_line}}</div>
+  </div>
+
+  <section id="services">
+    <div class="wrap">
+      <h2>What we build</h2>
+      <p class="section-intro">{{services_intro}}</p>
+      <ul class="services">
+{{services}}
+      </ul>
+    </div>
+  </section>
+
+  <section id="work" class="alt">
+    <div class="wrap">
+      <h2>Recent work</h2>
+      <p class="section-intro">A few jobs from the last year.</p>
+      <div class="gallery">
+{{gallery}}
+      </div>
+    </div>
+  </section>
+
+  <section id="reviews">
+    <div class="wrap">
+      <h2>What customers say</h2>
+      <p class="review-summary">{{review_summary}}</p>
+      <div class="reviews">
+{{reviews}}
+      </div>
+    </div>
+  </section>
+
+  <section id="how" class="alt">
+    <div class="wrap">
+      <h2>How it works</h2>
+      <p class="section-intro">From first message to finished job.</p>
+      <ol class="steps">
+{{steps}}
+      </ol>
+    </div>
+  </section>
+
+  <section id="area">
+    <div class="wrap">
+      <h2>Areas we cover</h2>
+      <p class="section-intro">{{area_intro}}</p>
+      <ul class="areas">
+{{areas}}
+      </ul>
+    </div>
+  </section>
+
+  <section id="quote" class="quote alt">
+    <div class="wrap">
+      <div class="quote-aside">
+        <h2>Get a free quote</h2>
+        <p>Tell us about the job and we'll get back to you within {{reply_time}}.</p>
+        <p class="direct">Prefer to talk? Call <a href="tel:{{phone_link}}">{{phone}}</a> or email <a href="mailto:{{email}}">{{email}}</a>.</p>
+      </div>
+      <form {{form_attrs}}>
+        <div class="field">
+          <label for="f-name">Your name</label>
+          <input id="f-name" name="name" autocomplete="name" required>
+        </div>
+        <div class="field">
+          <label for="f-phone">Phone number</label>
+          <input id="f-phone" name="phone" type="tel" autocomplete="tel" required>
+        </div>
+        <div class="field">
+          <label for="f-email">Email</label>
+          <input id="f-email" name="email" type="email" autocomplete="email">
+        </div>
+        <div class="field">
+          <label for="f-postcode">Postcode</label>
+          <input id="f-postcode" name="postcode" autocomplete="postal-code" required>
+        </div>
+        <div class="field full">
+          <label for="f-job">Type of job</label>
+          <select id="f-job" name="job_type">
+{{job_options}}
+            <option>Something else</option>
+          </select>
+        </div>
+        <div class="field full">
+          <label for="f-details">About the job</label>
+          <textarea id="f-details" name="details" placeholder="Rough sizes, materials, and when you'd like it done"></textarea>
+        </div>
+        <input class="hp" type="text" name="_gotcha" tabindex="-1" autocomplete="off" aria-hidden="true">
+        <div class="field full">
+          <button class="btn btn-primary" type="submit">Request a quote</button>
+        </div>
+        <p class="form-note">We only use your details to reply about your job.</p>
+      </form>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div>
+      <p><strong>{{business_name}}</strong></p>
+      <p>{{address}}</p>
+      <p><a href="tel:{{phone_link}}">{{phone}}</a> · <a href="mailto:{{email}}">{{email}}</a></p>
+    </div>
+    <div>
+{{footer_links}}
+      <p>© {{year}} {{legal_name}}</p>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

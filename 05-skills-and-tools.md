@@ -34,7 +34,7 @@ Keep the £500 budget in reserve: a domain for yourself, business cards for merc
 - Keeping this playbook updated as you learn what works
 
 ## Next things to build
-1. Carpenter website template (in this repo)
+1. ~~Carpenter website template~~ — done, see `website-template/`
 2. Simple service contract
 3. One-page sales sheet / proposal
 4. Monthly report template

@@ -1,0 +1,58 @@
+{
+  "business_name": "Oakline Joinery",
+  "legal_name": "Oakline Joinery Ltd",
+  "town": "Guildford",
+  "phone": "01632 960123",
+  "email": "hello@oaklinejoinery.example",
+  "address": "Unit 4, Example Trading Estate, Guildford, Surrey",
+  "site_url": "",
+  "meta_description": "Fitted wardrobes, kitchens, staircases and bespoke joinery across Guildford and Surrey. Free quotes within one working day.",
+
+  "headline": "Fitted furniture and joinery, built in Guildford",
+  "intro": "A team of six carpenters making wardrobes, kitchens, staircases and doors that fit your home properly. Free home visit and a written quote within three days.",
+  "hero_image": { "file": "placeholder-hero.svg", "alt": "Oak fitted wardrobe with sliding doors in a bedroom alcove" },
+  "area_line": "Measured, quoted and fitted within 20 miles of Guildford",
+
+  "services_intro": "Everything is made to measure and fitted by our own team.",
+  "services": [
+    { "name": "Fitted wardrobes", "description": "Alcove, loft and full-wall wardrobes with doors and interiors to suit.", "from_price": "£1,800" },
+    { "name": "Kitchens", "description": "Bespoke kitchens, or fitting a kitchen you've already bought.", "from_price": "£6,500" },
+    { "name": "Staircases", "description": "New staircases, spindle and handrail replacement, and repairs.", "from_price": "£2,200" },
+    { "name": "Doors and frames", "description": "Internal doors hung, oak door packages and new frames.", "from_price": "" },
+    { "name": "Media walls and shelving", "description": "Built-in TV units, alcove shelving and storage.", "from_price": "£1,200" },
+    { "name": "Garden rooms and decking", "description": "Timber decking, pergolas and small outbuildings.", "from_price": "" }
+  ],
+
+  "gallery": [
+    { "file": "placeholder-1.svg", "caption": "Oak alcove wardrobes, Godalming" },
+    { "file": "placeholder-2.svg", "caption": "Shaker kitchen, Guildford" },
+    { "file": "placeholder-3.svg", "caption": "Open-tread staircase, Woking" },
+    { "file": "placeholder-4.svg", "caption": "Media wall with floating shelves, Cranleigh" },
+    { "file": "placeholder-5.svg", "caption": "Loft eaves storage, Farnham" },
+    { "file": "placeholder-6.svg", "caption": "Hardwood decking, Shalford" }
+  ],
+
+  "review_rating": "",
+  "review_count": "",
+  "reviews": [
+    { "name": "Sample review", "location": "replace before launch", "text": "Paste a real Google review here, ideally one that mentions the type of job and the town." },
+    { "name": "Sample review", "location": "replace before launch", "text": "Pick reviews that mention speed, tidiness or communication, since those are what new customers worry about." },
+    { "name": "Sample review", "location": "replace before launch", "text": "Three reviews is enough here; link to the full Google profile in the footer." }
+  ],
+
+  "steps": [
+    { "title": "Send us the details", "text": "Fill in the form or call us. Photos and rough sizes help." },
+    { "title": "We visit and quote", "text": "We measure up and send a written, itemised quote within three days." },
+    { "title": "We build and fit", "text": "We agree a start date, make everything in our workshop and fit it on site." }
+  ],
+
+  "area_intro": "We work across Guildford and the surrounding towns and villages. Not sure if you're covered? Just ask.",
+  "areas": ["Guildford", "Godalming", "Woking", "Farnham", "Cranleigh", "Shalford", "Ripley", "Send"],
+
+  "reply_time": "one working day",
+  "form_endpoint": "",
+  "google_reviews_url": "",
+  "checkatrade_url": "",
+  "facebook_url": "",
+  "instagram_url": ""
+}
