@@ -5,238 +5,221 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Oakline Joinery | Carpenters in Guildford</title>
 <meta name="description" content="Fitted wardrobes, kitchens, staircases and bespoke joinery across Guildford and Surrey. Free quotes within one working day.">
+<meta name="theme-color" content="#ffffff">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,700..800&family=Public+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Lexend:wght@600;700&family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet">
 <style>
+/* Carpenter site template — design tokens
+   Palette: construction slate + safety orange (CTA only) + birch ply (ruler signature)
+   Type: Lexend (headings) + Source Sans 3 (body) */
 :root {
-  --ink: #1e2422;
-  --ink-soft: #4a524f;
-  --paper: #f4f5f2;
-  --white: #ffffff;
-  --ply: #d8b88a;
-  --ply-dark: #9c7a4f;
-  --chalk: #2a5caa;
-  --chalk-dark: #1f4785;
-  --line: #cbd0ca;
-  --measure: 66ch;
+  --color-foreground: #1e293b;
+  --color-muted-foreground: #475569;
+  --color-background: #f8fafc;
+  --color-card: #ffffff;
+  --color-border: #e2e8f0;
+  --color-border-strong: #94a3b8;
+  --color-primary: #334155;
+  --color-accent: #c2410c;          /* safety orange, white text 5.2:1 */
+  --color-accent-hover: #9a3412;
+  --color-on-accent: #ffffff;
+  --color-ply: #d8b88a;
+  --color-ply-dark: #8a6a45;
+  --color-destructive: #b91c1c;
+  --color-success: #15803d;
+  --color-ring: #c2410c;
+  --font-heading: "Lexend", system-ui, sans-serif;
+  --font-body: "Source Sans 3", system-ui, sans-serif;
+  --space-1: 8px; --space-2: 16px; --space-3: 24px; --space-4: 32px; --space-6: 48px; --space-8: 64px; --space-12: 96px;
+  --radius: 6px;
   --gutter: clamp(16px, 4vw, 48px);
-  --display: "Archivo", "Arial Narrow", sans-serif;
-  --body: "Public Sans", system-ui, sans-serif;
+  --measure: 65ch;
+  --header-h: 72px;
+  --ease: cubic-bezier(.2, .7, .3, 1);
 }
 
 * { box-sizing: border-box; }
-html { scroll-behavior: smooth; }
-@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+html { scroll-behavior: smooth; scroll-padding-top: calc(var(--header-h) + 16px); }
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { transition: none !important; }
+}
 
 body {
   margin: 0;
-  background: var(--paper);
-  color: var(--ink);
-  font-family: var(--body);
-  font-size: 1.0625rem;
+  background: var(--color-background);
+  color: var(--color-foreground);
+  font-family: var(--font-body);
+  font-size: 1.125rem;
   line-height: 1.6;
 }
-
-img { max-width: 100%; display: block; }
-a { color: var(--chalk); }
-a:hover { color: var(--chalk-dark); }
-:focus-visible { outline: 3px solid var(--chalk); outline-offset: 3px; }
-
+img { max-width: 100%; height: auto; display: block; }
+a { color: var(--color-accent); text-underline-offset: 3px; }
+a:hover { color: var(--color-accent-hover); }
+:focus-visible { outline: 3px solid var(--color-ring); outline-offset: 3px; border-radius: 2px; }
 .wrap { max-width: 1160px; margin: 0 auto; padding: 0 var(--gutter); }
+.skip { position: absolute; left: -9999px; }
+.skip:focus { left: var(--space-2); top: var(--space-2); z-index: 100; background: var(--color-card); padding: var(--space-1) var(--space-2); }
+
+h1, h2, h3 { font-family: var(--font-heading); color: var(--color-foreground); text-wrap: balance; }
+h2 { font-size: clamp(1.75rem, 3.4vw, 2.5rem); font-weight: 700; line-height: 1.15; margin: 0 0 var(--space-1); letter-spacing: -0.01em; }
+h3 { font-size: 1.2rem; font-weight: 600; line-height: 1.3; margin: 0 0 4px; }
+.section-intro { color: var(--color-muted-foreground); max-width: var(--measure); margin: 0 0 var(--space-4); }
 
 /* Header */
-.site-header {
-  background: var(--white);
-  border-bottom: 1px solid var(--line);
-  position: sticky; top: 0; z-index: 10;
-}
-.site-header .wrap {
-  display: flex; align-items: center; justify-content: space-between;
-  gap: 16px; min-height: 68px;
-}
-.brand {
-  font-family: var(--display);
-  font-stretch: 112%;
-  font-weight: 800;
-  font-size: 1.15rem;
-  color: var(--ink);
-  text-decoration: none;
-  line-height: 1.1;
-}
-.header-actions { display: flex; align-items: center; gap: 12px; }
-.header-phone { font-weight: 600; color: var(--ink); text-decoration: none; white-space: nowrap; }
-.header-phone:hover { color: var(--chalk); }
+.site-header { background: var(--color-card); border-bottom: 1px solid var(--color-border); position: sticky; top: 0; z-index: 20; }
+.site-header .wrap { display: flex; align-items: center; justify-content: space-between; gap: var(--space-2); min-height: var(--header-h); }
+.brand { font-family: var(--font-heading); font-weight: 700; font-size: 1.2rem; color: var(--color-foreground); text-decoration: none; }
+.header-actions { display: flex; align-items: center; gap: var(--space-2); }
+.header-phone { display: inline-flex; align-items: center; gap: 8px; min-height: 44px; font-weight: 600; color: var(--color-foreground); text-decoration: none; white-space: nowrap; }
+.header-phone:hover { color: var(--color-accent); }
 
 /* Buttons */
 .btn {
-  display: inline-block;
-  font-family: var(--body);
-  font-weight: 700;
-  font-size: 1rem;
-  padding: 0.8em 1.3em;
-  border-radius: 4px;
-  text-decoration: none;
-  border: 2px solid var(--chalk);
-  cursor: pointer;
-  line-height: 1.2;
+  display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+  min-height: 48px; padding: 0 1.4em;
+  font-family: var(--font-body); font-weight: 700; font-size: 1.05rem;
+  border-radius: var(--radius); border: 2px solid transparent;
+  text-decoration: none; cursor: pointer;
+  transition: background-color .18s var(--ease), color .18s var(--ease), border-color .18s var(--ease);
 }
-.btn-primary { background: var(--chalk); color: var(--white); }
-.btn-primary:hover { background: var(--chalk-dark); border-color: var(--chalk-dark); color: var(--white); }
-.btn-secondary { background: transparent; color: var(--chalk); }
-.btn-secondary:hover { background: var(--white); color: var(--chalk-dark); }
-.site-header .btn { padding: 0.6em 1em; }
+.btn-primary { background: var(--color-accent); color: var(--color-on-accent); }
+.btn-primary:hover { background: var(--color-accent-hover); color: var(--color-on-accent); }
+.btn-secondary { background: var(--color-card); color: var(--color-foreground); border-color: var(--color-border-strong); }
+.btn-secondary:hover { border-color: var(--color-foreground); color: var(--color-foreground); }
+.icon { width: 20px; height: 20px; flex: none; }
 
 /* Hero */
-.hero { background: var(--white); }
+.hero { background: var(--color-card); }
 .hero .wrap {
-  display: grid;
-  grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr);
-  gap: clamp(24px, 4vw, 56px);
-  align-items: center;
-  padding-top: clamp(32px, 6vw, 72px);
-  padding-bottom: clamp(32px, 6vw, 72px);
+  display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr);
+  gap: clamp(24px, 4vw, 56px); align-items: center;
+  padding-top: clamp(32px, 6vw, 80px); padding-bottom: clamp(32px, 6vw, 80px);
 }
-.hero h1 {
-  font-family: var(--display);
-  font-stretch: 118%;
-  font-weight: 800;
-  font-size: clamp(2.2rem, 5.2vw, 4rem);
-  line-height: 1.02;
-  letter-spacing: -0.01em;
-  margin: 0 0 20px;
-}
-.hero p { font-size: 1.2rem; color: var(--ink-soft); max-width: 46ch; margin: 0 0 28px; }
+.hero h1 { font-size: clamp(2.2rem, 5vw, 3.6rem); font-weight: 700; line-height: 1.08; letter-spacing: -0.02em; margin: 0 0 var(--space-3); }
+.hero p { font-size: 1.25rem; color: var(--color-muted-foreground); max-width: 44ch; margin: 0 0 var(--space-4); }
 .hero-ctas { display: flex; flex-wrap: wrap; gap: 12px; }
-.hero-photo { border-radius: 6px; overflow: hidden; aspect-ratio: 4 / 3; background: var(--ply); }
+.hero-photo { border-radius: var(--radius); overflow: hidden; aspect-ratio: 4 / 3; background: var(--color-ply); }
 .hero-photo img { width: 100%; height: 100%; object-fit: cover; }
 
-/* The ruler: the one signature element */
+/* Ruler: the one signature element */
 .ruler {
-  position: relative;
-  background-color: var(--ply);
+  background-color: var(--color-ply);
   background-image:
-    linear-gradient(90deg, var(--ink) 2px, transparent 2px),
-    linear-gradient(90deg, var(--ink) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(30, 36, 34, 0.55) 1px, transparent 1px);
+    linear-gradient(90deg, var(--color-foreground) 2px, transparent 2px),
+    linear-gradient(90deg, var(--color-foreground) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(30, 41, 59, .5) 1px, transparent 1px);
   background-size: 100px 22px, 50px 14px, 10px 8px;
   background-repeat: repeat-x;
-  background-position: var(--gutter) 0, var(--gutter) 0, var(--gutter) 0;
-  border-top: 1px solid var(--ply-dark);
-  border-bottom: 1px solid var(--ply-dark);
+  background-position: var(--gutter) 0;
+  border-top: 1px solid var(--color-ply-dark);
+  border-bottom: 1px solid var(--color-ply-dark);
 }
-.ruler .wrap {
-  padding-top: 34px;
-  padding-bottom: 16px;
-  font-family: var(--display);
-  font-stretch: 110%;
-  font-weight: 700;
-  font-size: clamp(1rem, 2.2vw, 1.3rem);
-}
+.ruler .wrap { padding-top: 34px; padding-bottom: 16px; font-family: var(--font-heading); font-weight: 600; font-size: clamp(1rem, 2.2vw, 1.25rem); }
+
+/* Proof strip: rating + trust points, directly under the hero */
+.proof { background: var(--color-card); border-bottom: 1px solid var(--color-border); }
+.proof .wrap { display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-2) var(--space-4); padding-top: var(--space-3); padding-bottom: var(--space-3); }
+.rating { display: flex; align-items: center; gap: 10px; font-weight: 700; }
+.stars { display: inline-flex; gap: 2px; color: #b45309; }
+.stars svg { width: 20px; height: 20px; }
+.trust { display: flex; flex-wrap: wrap; gap: 12px var(--space-3); list-style: none; margin: 0; padding: 0; }
+.trust li { display: inline-flex; align-items: center; gap: 8px; color: var(--color-muted-foreground); font-weight: 600; }
+.trust .icon { color: var(--color-success); }
 
 /* Sections */
-section { padding: clamp(48px, 8vw, 96px) 0; }
-section.alt { background: var(--white); }
-h2 {
-  font-family: var(--display);
-  font-stretch: 112%;
-  font-weight: 800;
-  font-size: clamp(1.8rem, 3.6vw, 2.6rem);
-  line-height: 1.1;
-  margin: 0 0 12px;
-}
-.section-intro { color: var(--ink-soft); max-width: var(--measure); margin: 0 0 36px; }
-
-/* Services: a list, not cards */
-.services {
-  list-style: none; margin: 0; padding: 0;
-  display: grid; grid-template-columns: repeat(2, minmax(0, 1fr));
-  column-gap: clamp(24px, 5vw, 64px);
-  border-top: 2px solid var(--ink);
-}
-.services li { padding: 20px 0; border-bottom: 1px solid var(--line); }
-.services h3 { font-size: 1.2rem; margin: 0 0 4px; }
-.services p { margin: 0; color: var(--ink-soft); }
-.services .from { display: block; margin-top: 6px; font-weight: 600; color: var(--ply-dark); }
-
-/* Gallery */
-.gallery {
-  display: grid; gap: 12px;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-}
-.gallery figure { margin: 0; }
-.gallery img { width: 100%; height: auto; aspect-ratio: 1 / 1; object-fit: cover; border-radius: 4px; background: var(--ply); }
-.gallery figcaption { font-size: 0.9rem; color: var(--ink-soft); margin-top: 6px; }
+.section { padding: clamp(48px, 8vw, 96px) 0; }
+.section-alt { background: var(--color-card); }
 
 /* Reviews */
-.review-summary { font-weight: 600; margin: 0 0 28px; }
-.reviews {
-  display: grid; gap: clamp(20px, 3vw, 40px);
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-}
-.reviews blockquote { margin: 0; padding-left: 18px; border-left: 3px solid var(--ply); }
-.reviews p { margin: 0 0 10px; font-size: 1.05rem; }
-.reviews cite { font-style: normal; font-weight: 600; color: var(--ink-soft); font-size: 0.95rem; }
+.reviews { display: grid; gap: var(--space-3); grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.reviews blockquote { margin: 0; padding: var(--space-3); background: var(--color-card); border: 1px solid var(--color-border); border-top: 4px solid var(--color-ply); border-radius: var(--radius); }
+.reviews blockquote .stars { margin-bottom: var(--space-1); }
+.reviews p { margin: 0 0 12px; }
+.reviews cite { font-style: normal; font-weight: 600; color: var(--color-muted-foreground); font-size: 1rem; }
+.reviews-link { display: inline-flex; align-items: center; min-height: 44px; margin-top: var(--space-2); font-weight: 600; }
 
-/* How it works: a real sequence, so it is numbered */
-.steps { list-style: none; margin: 0; padding: 0; counter-reset: step; display: grid; gap: 24px; grid-template-columns: repeat(3, minmax(0, 1fr)); }
+/* Services: a ruled list, not cards */
+.services { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: clamp(24px, 5vw, 64px); border-top: 2px solid var(--color-foreground); }
+.services li { padding: 20px 0; border-bottom: 1px solid var(--color-border); }
+.services p { margin: 0; color: var(--color-muted-foreground); }
+.services .from { display: block; margin-top: 6px; font-weight: 700; color: var(--color-ply-dark); }
+
+/* Gallery */
+.gallery { display: grid; gap: 12px; grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.gallery figure { margin: 0; }
+.gallery img { width: 100%; aspect-ratio: 1 / 1; object-fit: cover; border-radius: var(--radius); background: var(--color-ply); }
+.gallery figcaption { font-size: 1rem; color: var(--color-muted-foreground); margin-top: 6px; }
+
+/* How it works: a real sequence, so numbered */
+.steps { list-style: none; margin: 0; padding: 0; counter-reset: step; display: grid; gap: var(--space-4); grid-template-columns: repeat(3, minmax(0, 1fr)); }
 .steps li { counter-increment: step; }
-.steps li::before {
-  content: counter(step);
-  display: block;
-  font-family: var(--display);
-  font-stretch: 118%;
-  font-weight: 800;
-  font-size: 2.6rem;
-  line-height: 1;
-  color: var(--chalk);
-  margin-bottom: 8px;
-}
-.steps h3 { margin: 0 0 4px; font-size: 1.15rem; }
-.steps p { margin: 0; color: var(--ink-soft); }
+.steps li::before { content: counter(step); display: grid; place-items: center; width: 48px; height: 48px; margin-bottom: 12px; border-radius: 50%; background: var(--color-ply); font-family: var(--font-heading); font-weight: 700; font-size: 1.3rem; }
+.steps p { margin: 0; color: var(--color-muted-foreground); }
 
-/* Area */
+/* Area + map */
+.area-grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr); gap: clamp(24px, 4vw, 56px); align-items: start; }
 .areas { display: flex; flex-wrap: wrap; gap: 8px; list-style: none; padding: 0; margin: 0; }
-.areas li { background: var(--white); border: 1px solid var(--line); border-radius: 999px; padding: 6px 14px; font-size: 0.95rem; }
+.areas li { background: var(--color-card); border: 1px solid var(--color-border); border-radius: 999px; padding: 6px 14px; }
+.map { border: 1px solid var(--color-border); border-radius: var(--radius); overflow: hidden; aspect-ratio: 4 / 3; background: var(--color-border); }
+.map iframe { width: 100%; height: 100%; border: 0; display: block; }
 
 /* Quote form */
-.quote .wrap { display: grid; grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr); gap: clamp(24px, 5vw, 64px); }
-.quote-aside p { color: var(--ink-soft); }
-.quote-aside .direct { font-weight: 600; color: var(--ink); }
-form { display: grid; gap: 16px; grid-template-columns: repeat(2, minmax(0, 1fr)); }
-.field { display: grid; gap: 6px; }
-.field.full { grid-column: 1 / -1; }
-label { font-weight: 600; font-size: 0.95rem; }
+.quote-grid { display: grid; grid-template-columns: minmax(0, .8fr) minmax(0, 1.2fr); gap: clamp(24px, 5vw, 64px); }
+.quote-aside p { color: var(--color-muted-foreground); }
+.quote-aside .direct { color: var(--color-foreground); font-weight: 600; }
+form { display: grid; gap: 20px var(--space-2); grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.field { display: grid; gap: 6px; align-content: start; }
+.field.full, .error-summary, .form-note, .form-actions { grid-column: 1 / -1; }
+label { font-weight: 700; font-size: 1rem; }
+.optional { font-weight: 400; color: var(--color-muted-foreground); }
+.hint { font-size: .95rem; color: var(--color-muted-foreground); margin: 0; }
 input, select, textarea {
-  font: inherit;
-  padding: 0.7em 0.8em;
-  border: 1px solid #9aa29d;
-  border-radius: 4px;
-  background: var(--white);
-  color: var(--ink);
-  width: 100%;
+  font: inherit; font-size: 1.05rem; min-height: 48px;
+  padding: .6em .8em; border: 1px solid var(--color-border-strong); border-radius: var(--radius);
+  background: var(--color-card); color: var(--color-foreground); width: 100%;
+  transition: border-color .15s var(--ease);
 }
-textarea { min-height: 130px; resize: vertical; }
+input:hover, select:hover, textarea:hover { border-color: var(--color-primary); }
+textarea { min-height: 140px; resize: vertical; }
+[aria-invalid="true"] { border-color: var(--color-destructive); border-width: 2px; }
+.error { color: var(--color-destructive); font-weight: 600; font-size: .95rem; margin: 0; }
+.error:empty { display: none; }
+.error-summary { border: 2px solid var(--color-destructive); border-radius: var(--radius); padding: var(--space-2) var(--space-3); background: #fef2f2; }
+.error-summary h3 { color: var(--color-destructive); margin-bottom: 8px; }
+.error-summary ul { margin: 0; padding-left: 1.2em; }
+.error-summary[hidden] { display: none; }
+.error-summary, input, select, textarea { scroll-margin-top: calc(var(--header-h) + 24px); }
 .hp { position: absolute; left: -9999px; }
-.form-note { grid-column: 1 / -1; font-size: 0.9rem; color: var(--ink-soft); margin: 0; }
+.form-note { font-size: .95rem; color: var(--color-muted-foreground); margin: 0; }
+.form-actions .btn { width: 100%; }
 
 /* Footer */
-footer { background: var(--ink); color: #d7dbd8; padding: 40px 0; font-size: 0.95rem; }
-footer a { color: var(--white); }
-footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 16px; }
+footer { background: var(--color-foreground); color: #cbd5e1; padding: var(--space-6) 0; font-size: 1rem; }
+footer a { color: #ffffff; }
+footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; gap: var(--space-2); }
 footer p { margin: 0 0 6px; }
 
-/* Responsive */
+/* Mobile sticky action bar */
+.mobile-bar { display: none; }
+
 @media (max-width: 860px) {
-  .hero .wrap, .quote .wrap { grid-template-columns: 1fr; }
+  .hero .wrap, .quote-grid, .area-grid { grid-template-columns: 1fr; }
   .reviews, .steps { grid-template-columns: 1fr; }
   .gallery { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
-@media (max-width: 600px) {
-  .services { grid-template-columns: 1fr; }
-  form { grid-template-columns: 1fr; }
-  .site-header .btn { display: none; }
-  .brand { font-size: 1rem; }
+@media (max-width: 640px) {
+  :root { --header-h: 60px; }
+  .services, form { grid-template-columns: 1fr; }
+  .header-actions { display: none; }
+  .mobile-bar {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 8px;
+    position: fixed; left: 0; right: 0; bottom: 0; z-index: 30;
+    padding: 8px var(--gutter) calc(8px + env(safe-area-inset-bottom));
+    background: var(--color-card); border-top: 1px solid var(--color-border);
+  }
+  body { padding-bottom: calc(72px + env(safe-area-inset-bottom)); }
 }
 
 </style>
@@ -266,18 +249,25 @@ footer p { margin: 0 0 6px; }
 </script>
 </head>
 <body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="i-phone" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></symbol>
+  <symbol id="i-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></symbol>
+  <symbol id="i-star" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></symbol>
+  <symbol id="i-quote" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/><path d="M8 13h8M8 17h5"/></symbol>
+</svg>
+<a class="skip" href="#main">Skip to content</a>
 
 <header class="site-header">
   <div class="wrap">
-    <a class="brand" href="#top">Oakline Joinery</a>
+    <a class="brand" href="#main">Oakline Joinery</a>
     <div class="header-actions">
-      <a class="header-phone" href="tel:+441632960123">01632 960123</a>
-      <a class="btn btn-primary" href="#quote">Get a quote</a>
+      <a class="header-phone" href="tel:+441632960123"><svg class="icon" aria-hidden="true"><use href="#i-phone"/></svg>01632 960123</a>
+      <a class="btn btn-primary" href="#quote">Get a free quote</a>
     </div>
   </div>
 </header>
 
-<main id="top">
+<main id="main">
   <div class="hero">
     <div class="wrap">
       <div>
@@ -285,22 +275,47 @@ footer p { margin: 0 0 6px; }
         <p>A team of six carpenters making wardrobes, kitchens, staircases and doors that fit your home properly. Free home visit and a written quote within three days.</p>
         <div class="hero-ctas">
           <a class="btn btn-primary" href="#quote">Get a free quote</a>
-          <a class="btn btn-secondary" href="tel:+441632960123">Call 01632 960123</a>
+          <a class="btn btn-secondary" href="tel:+441632960123"><svg class="icon" aria-hidden="true"><use href="#i-phone"/></svg>Call 01632 960123</a>
         </div>
       </div>
       <div class="hero-photo">
-        <img src="images/placeholder-hero.svg" alt="Oak fitted wardrobe with sliding doors in a bedroom alcove" width="1200" height="900">
+        <img src="images/placeholder-hero.svg" alt="Oak fitted wardrobe with sliding doors in a bedroom alcove" width="1200" height="900" fetchpriority="high">
       </div>
     </div>
   </div>
 
-  <div class="ruler" role="note">
+  <div class="ruler">
     <div class="wrap">Measured, quoted and fitted within 20 miles of Guildford</div>
   </div>
 
-  <section id="services">
+  <div class="proof">
     <div class="wrap">
-      <h2>What we build</h2>
+
+      <ul class="trust">
+        <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg>Fully insured</li>
+        <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg>15 years in business</li>
+        <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg>Written, itemised quotes</li>
+        <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg>12-month workmanship guarantee</li>
+      </ul>
+    </div>
+  </div>
+
+  <section class="section" id="reviews" aria-labelledby="reviews-title">
+    <div class="wrap">
+      <h2 id="reviews-title">What customers say</h2>
+      <p class="section-intro">Reviews from recent customers.</p>
+      <div class="reviews">
+        <blockquote><span class="stars" role="img" aria-label="5 out of 5 stars"><svg aria-hidden="true"><use href="#i-star"/></svg><svg aria-hidden="true"><use href="#i-star"/></svg><svg aria-hidden="true"><use href="#i-star"/></svg><svg aria-hidden="true"><use href="#i-star"/></svg><svg aria-hidden="true"><use href="#i-star"/></svg></span><p>Paste a real Google review here, ideally one that mentions the type of job and the town.</p><cite>Sample review, replace before launch</cite></blockquote>
+        <blockquote><span class="stars" role="img" aria-label="5 out of 5 stars"><svg aria-hidden="true"><use href="#i-star"/></svg><svg aria-hidden="true"><use href="#i-star"/></svg><svg aria-hidden="true"><use href="#i-star"/></svg><svg aria-hidden="true"><use href="#i-star"/></svg><svg aria-hidden="true"><use href="#i-star"/></svg></span><p>Pick reviews that mention speed, tidiness or communication, since those are what new customers worry about.</p><cite>Sample review, replace before launch</cite></blockquote>
+        <blockquote><span class="stars" role="img" aria-label="5 out of 5 stars"><svg aria-hidden="true"><use href="#i-star"/></svg><svg aria-hidden="true"><use href="#i-star"/></svg><svg aria-hidden="true"><use href="#i-star"/></svg><svg aria-hidden="true"><use href="#i-star"/></svg><svg aria-hidden="true"><use href="#i-star"/></svg></span><p>Three reviews is enough here; link to the full Google profile in the footer.</p><cite>Sample review, replace before launch</cite></blockquote>
+      </div>
+
+    </div>
+  </section>
+
+  <section class="section section-alt" id="services" aria-labelledby="services-title">
+    <div class="wrap">
+      <h2 id="services-title">What we build</h2>
       <p class="section-intro">Everything is made to measure and fitted by our own team.</p>
       <ul class="services">
         <li><h3>Fitted wardrobes</h3><p>Alcove, loft and full-wall wardrobes with doors and interiors to suit.</p><span class="from">From £1,800</span></li>
@@ -313,9 +328,9 @@ footer p { margin: 0 0 6px; }
     </div>
   </section>
 
-  <section id="work" class="alt">
+  <section class="section" id="work" aria-labelledby="work-title">
     <div class="wrap">
-      <h2>Recent work</h2>
+      <h2 id="work-title">Recent work</h2>
       <p class="section-intro">A few jobs from the last year.</p>
       <div class="gallery">
         <figure><img src="images/placeholder-1.svg" alt="Oak alcove wardrobes, Godalming" loading="lazy" width="600" height="600"><figcaption>Oak alcove wardrobes, Godalming</figcaption></figure>
@@ -328,21 +343,9 @@ footer p { margin: 0 0 6px; }
     </div>
   </section>
 
-  <section id="reviews">
+  <section class="section section-alt" id="how" aria-labelledby="how-title">
     <div class="wrap">
-      <h2>What customers say</h2>
-      <p class="review-summary">Reviews from recent customers.</p>
-      <div class="reviews">
-        <blockquote><p>Paste a real Google review here, ideally one that mentions the type of job and the town.</p><cite>Sample review, replace before launch</cite></blockquote>
-        <blockquote><p>Pick reviews that mention speed, tidiness or communication, since those are what new customers worry about.</p><cite>Sample review, replace before launch</cite></blockquote>
-        <blockquote><p>Three reviews is enough here; link to the full Google profile in the footer.</p><cite>Sample review, replace before launch</cite></blockquote>
-      </div>
-    </div>
-  </section>
-
-  <section id="how" class="alt">
-    <div class="wrap">
-      <h2>How it works</h2>
+      <h2 id="how-title">How it works</h2>
       <p class="section-intro">From first message to finished job.</p>
       <ol class="steps">
         <li><h3>Send us the details</h3><p>Fill in the form or call us. Photos and rough sizes help.</p></li>
@@ -352,11 +355,12 @@ footer p { margin: 0 0 6px; }
     </div>
   </section>
 
-  <section id="area">
-    <div class="wrap">
-      <h2>Areas we cover</h2>
-      <p class="section-intro">We work across Guildford and the surrounding towns and villages. Not sure if you&#x27;re covered? Just ask.</p>
-      <ul class="areas">
+  <section class="section" id="area" aria-labelledby="area-title">
+    <div class="wrap area-grid">
+      <div>
+        <h2 id="area-title">Areas we cover</h2>
+        <p class="section-intro">We work across Guildford and the surrounding towns and villages. Not sure if you&#x27;re covered? Just ask.</p>
+        <ul class="areas">
         <li>Guildford</li>
         <li>Godalming</li>
         <li>Woking</li>
@@ -365,33 +369,43 @@ footer p { margin: 0 0 6px; }
         <li>Shalford</li>
         <li>Ripley</li>
         <li>Send</li>
-      </ul>
+        </ul>
+      </div>
+      <div class="map"><iframe title="Map of the area we cover around Guildford" src="https://www.google.com/maps?q=Guildford%2C+Surrey&amp;output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe></div>
     </div>
   </section>
 
-  <section id="quote" class="quote alt">
-    <div class="wrap">
+  <section class="section section-alt" id="quote" aria-labelledby="quote-title">
+    <div class="wrap quote-grid">
       <div class="quote-aside">
-        <h2>Get a free quote</h2>
-        <p>Tell us about the job and we'll get back to you within one working day.</p>
+        <h2 id="quote-title">Get a free quote</h2>
+        <p>Tell us about the job and we'll reply within one working day.</p>
         <p class="direct">Prefer to talk? Call <a href="tel:+441632960123">01632 960123</a> or email <a href="mailto:hello@oaklinejoinery.example">hello@oaklinejoinery.example</a>.</p>
       </div>
-      <form action="mailto:hello@oaklinejoinery.example" method="POST" enctype="text/plain">
+      <form id="quote-form" action="mailto:hello@oaklinejoinery.example" method="POST" enctype="text/plain" novalidate>
+        <div class="error-summary" id="error-summary" role="alert" tabindex="-1" hidden>
+          <h3>Check the form</h3>
+          <ul id="error-list"></ul>
+        </div>
         <div class="field">
           <label for="f-name">Your name</label>
-          <input id="f-name" name="name" autocomplete="name" required>
+          <input id="f-name" name="name" autocomplete="name" required aria-describedby="e-name" data-error="Enter your name">
+          <p class="error" id="e-name"></p>
         </div>
         <div class="field">
           <label for="f-phone">Phone number</label>
-          <input id="f-phone" name="phone" type="tel" autocomplete="tel" required>
+          <input id="f-phone" name="phone" type="tel" inputmode="tel" autocomplete="tel" required aria-describedby="e-phone" data-error="Enter a phone number, like 07700 900123">
+          <p class="error" id="e-phone"></p>
         </div>
         <div class="field">
-          <label for="f-email">Email</label>
-          <input id="f-email" name="email" type="email" autocomplete="email">
+          <label for="f-email">Email <span class="optional">(optional)</span></label>
+          <input id="f-email" name="email" type="email" inputmode="email" autocomplete="email" aria-describedby="e-email" data-error="Enter an email address, like name@example.com">
+          <p class="error" id="e-email"></p>
         </div>
         <div class="field">
           <label for="f-postcode">Postcode</label>
-          <input id="f-postcode" name="postcode" autocomplete="postal-code" required>
+          <input id="f-postcode" name="postcode" autocomplete="postal-code" autocapitalize="characters" required aria-describedby="e-postcode" data-error="Enter your postcode, like GU1 4AA">
+          <p class="error" id="e-postcode"></p>
         </div>
         <div class="field full">
           <label for="f-job">Type of job</label>
@@ -406,12 +420,13 @@ footer p { margin: 0 0 6px; }
           </select>
         </div>
         <div class="field full">
-          <label for="f-details">About the job</label>
-          <textarea id="f-details" name="details" placeholder="Rough sizes, materials, and when you'd like it done"></textarea>
+          <label for="f-details">About the job <span class="optional">(optional)</span></label>
+          <p class="hint" id="h-details">Rough sizes, materials, and when you'd like it done.</p>
+          <textarea id="f-details" name="details" aria-describedby="h-details"></textarea>
         </div>
         <input class="hp" type="text" name="_gotcha" tabindex="-1" autocomplete="off" aria-hidden="true">
-        <div class="field full">
-          <button class="btn btn-primary" type="submit">Request a quote</button>
+        <div class="form-actions">
+          <button class="btn btn-primary" type="submit"><svg class="icon" aria-hidden="true"><use href="#i-quote"/></svg>Request a quote</button>
         </div>
         <p class="form-note">We only use your details to reply about your job.</p>
       </form>
@@ -433,5 +448,52 @@ footer p { margin: 0 0 6px; }
   </div>
 </footer>
 
+<nav class="mobile-bar" aria-label="Quick contact">
+  <a class="btn btn-secondary" href="tel:+441632960123"><svg class="icon" aria-hidden="true"><use href="#i-phone"/></svg>Call</a>
+  <a class="btn btn-primary" href="#quote">Get a quote</a>
+</nav>
+
+<script>
+(function () {
+  var form = document.getElementById("quote-form");
+  if (!form) return;
+  var summary = document.getElementById("error-summary");
+  var list = document.getElementById("error-list");
+  function smooth() { return window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth"; }
+  var rules = {
+    "f-name": function (v) { return v.trim().length > 0; },
+    "f-phone": function (v) { return v.replace(/\D/g, "").length >= 10; },
+    "f-email": function (v) { return v.trim() === "" || /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v.trim()); },
+    "f-postcode": function (v) { return /^[A-Z]{1,2}\d[A-Z\d]?\s*\d[A-Z]{2}$/i.test(v.trim()); }
+  };
+  function check(input) {
+    var ok = rules[input.id](input.value);
+    var msg = document.getElementById(input.getAttribute("aria-describedby"));
+    input.setAttribute("aria-invalid", ok ? "false" : "true");
+    msg.textContent = ok ? "" : input.dataset.error;
+    return ok;
+  }
+  Object.keys(rules).forEach(function (id) {
+    var input = document.getElementById(id);
+    input.addEventListener("blur", function () { if (input.value || input.required) check(input); });
+    input.addEventListener("input", function () { if (input.getAttribute("aria-invalid") === "true") check(input); });
+  });
+  form.addEventListener("submit", function (e) {
+    var failed = Object.keys(rules).map(function (id) { return document.getElementById(id); }).filter(function (i) { return !check(i); });
+    if (!failed.length) { summary.hidden = true; return; }
+    e.preventDefault();
+    list.innerHTML = "";
+    failed.forEach(function (i) {
+      var li = document.createElement("li"), a = document.createElement("a");
+      a.href = "#" + i.id; a.textContent = i.dataset.error;
+      a.addEventListener("click", function (ev) { ev.preventDefault(); i.focus({ preventScroll: true }); i.scrollIntoView({ block: "start", behavior: smooth() }); });
+      li.appendChild(a); list.appendChild(li);
+    });
+    summary.hidden = false;
+    summary.focus({ preventScroll: true });
+    summary.scrollIntoView({ block: "start", behavior: smooth() });
+  });
+})();
+</script>
 </body>
 </html>

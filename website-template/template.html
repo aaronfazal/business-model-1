@@ -5,9 +5,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>{{title}}</title>
 <meta name="description" content="{{meta_description}}">
+<meta name="theme-color" content="#ffffff">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,700..800&family=Public+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Lexend:wght@600;700&family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet">
 <style>
 {{css}}
 </style>
@@ -16,18 +17,25 @@
 </script>
 </head>
 <body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="i-phone" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></symbol>
+  <symbol id="i-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></symbol>
+  <symbol id="i-star" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></symbol>
+  <symbol id="i-quote" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/><path d="M8 13h8M8 17h5"/></symbol>
+</svg>
+<a class="skip" href="#main">Skip to content</a>
 
 <header class="site-header">
   <div class="wrap">
-    <a class="brand" href="#top">{{business_name}}</a>
+    <a class="brand" href="#main">{{business_name}}</a>
     <div class="header-actions">
-      <a class="header-phone" href="tel:{{phone_link}}">{{phone}}</a>
-      <a class="btn btn-primary" href="#quote">Get a quote</a>
+      <a class="header-phone" href="tel:{{phone_link}}"><svg class="icon" aria-hidden="true"><use href="#i-phone"/></svg>{{phone}}</a>
+      <a class="btn btn-primary" href="#quote">Get a free quote</a>
     </div>
   </div>
 </header>
 
-<main id="top">
+<main id="main">
   <div class="hero">
     <div class="wrap">
       <div>
@@ -35,22 +43,42 @@
         <p>{{intro}}</p>
         <div class="hero-ctas">
           <a class="btn btn-primary" href="#quote">Get a free quote</a>
-          <a class="btn btn-secondary" href="tel:{{phone_link}}">Call {{phone}}</a>
+          <a class="btn btn-secondary" href="tel:{{phone_link}}"><svg class="icon" aria-hidden="true"><use href="#i-phone"/></svg>Call {{phone}}</a>
         </div>
       </div>
       <div class="hero-photo">
-        <img src="{{hero_image}}" alt="{{hero_alt}}" width="1200" height="900">
+        <img src="{{hero_image}}" alt="{{hero_alt}}" width="1200" height="900" fetchpriority="high">
       </div>
     </div>
   </div>
 
-  <div class="ruler" role="note">
+  <div class="ruler">
     <div class="wrap">{{area_line}}</div>
   </div>
 
-  <section id="services">
+  <div class="proof">
     <div class="wrap">
-      <h2>What we build</h2>
+{{rating_block}}
+      <ul class="trust">
+{{trust_points}}
+      </ul>
+    </div>
+  </div>
+
+  <section class="section" id="reviews" aria-labelledby="reviews-title">
+    <div class="wrap">
+      <h2 id="reviews-title">What customers say</h2>
+      <p class="section-intro">{{review_intro}}</p>
+      <div class="reviews">
+{{reviews}}
+      </div>
+{{reviews_link}}
+    </div>
+  </section>
+
+  <section class="section section-alt" id="services" aria-labelledby="services-title">
+    <div class="wrap">
+      <h2 id="services-title">What we build</h2>
       <p class="section-intro">{{services_intro}}</p>
       <ul class="services">
 {{services}}
@@ -58,9 +86,9 @@
     </div>
   </section>
 
-  <section id="work" class="alt">
+  <section class="section" id="work" aria-labelledby="work-title">
     <div class="wrap">
-      <h2>Recent work</h2>
+      <h2 id="work-title">Recent work</h2>
       <p class="section-intro">A few jobs from the last year.</p>
       <div class="gallery">
 {{gallery}}
@@ -68,19 +96,9 @@
     </div>
   </section>
 
-  <section id="reviews">
+  <section class="section section-alt" id="how" aria-labelledby="how-title">
     <div class="wrap">
-      <h2>What customers say</h2>
-      <p class="review-summary">{{review_summary}}</p>
-      <div class="reviews">
-{{reviews}}
-      </div>
-    </div>
-  </section>
-
-  <section id="how" class="alt">
-    <div class="wrap">
-      <h2>How it works</h2>
+      <h2 id="how-title">How it works</h2>
       <p class="section-intro">From first message to finished job.</p>
       <ol class="steps">
 {{steps}}
@@ -88,39 +106,50 @@
     </div>
   </section>
 
-  <section id="area">
-    <div class="wrap">
-      <h2>Areas we cover</h2>
-      <p class="section-intro">{{area_intro}}</p>
-      <ul class="areas">
+  <section class="section" id="area" aria-labelledby="area-title">
+    <div class="wrap area-grid">
+      <div>
+        <h2 id="area-title">Areas we cover</h2>
+        <p class="section-intro">{{area_intro}}</p>
+        <ul class="areas">
 {{areas}}
-      </ul>
+        </ul>
+      </div>
+{{map}}
     </div>
   </section>
 
-  <section id="quote" class="quote alt">
-    <div class="wrap">
+  <section class="section section-alt" id="quote" aria-labelledby="quote-title">
+    <div class="wrap quote-grid">
       <div class="quote-aside">
-        <h2>Get a free quote</h2>
-        <p>Tell us about the job and we'll get back to you within {{reply_time}}.</p>
+        <h2 id="quote-title">Get a free quote</h2>
+        <p>Tell us about the job and we'll reply within {{reply_time}}.</p>
         <p class="direct">Prefer to talk? Call <a href="tel:{{phone_link}}">{{phone}}</a> or email <a href="mailto:{{email}}">{{email}}</a>.</p>
       </div>
-      <form {{form_attrs}}>
+      <form id="quote-form" {{form_attrs}} novalidate>
+        <div class="error-summary" id="error-summary" role="alert" tabindex="-1" hidden>
+          <h3>Check the form</h3>
+          <ul id="error-list"></ul>
+        </div>
         <div class="field">
           <label for="f-name">Your name</label>
-          <input id="f-name" name="name" autocomplete="name" required>
+          <input id="f-name" name="name" autocomplete="name" required aria-describedby="e-name" data-error="Enter your name">
+          <p class="error" id="e-name"></p>
         </div>
         <div class="field">
           <label for="f-phone">Phone number</label>
-          <input id="f-phone" name="phone" type="tel" autocomplete="tel" required>
+          <input id="f-phone" name="phone" type="tel" inputmode="tel" autocomplete="tel" required aria-describedby="e-phone" data-error="Enter a phone number, like 07700 900123">
+          <p class="error" id="e-phone"></p>
         </div>
         <div class="field">
-          <label for="f-email">Email</label>
-          <input id="f-email" name="email" type="email" autocomplete="email">
+          <label for="f-email">Email <span class="optional">(optional)</span></label>
+          <input id="f-email" name="email" type="email" inputmode="email" autocomplete="email" aria-describedby="e-email" data-error="Enter an email address, like name@example.com">
+          <p class="error" id="e-email"></p>
         </div>
         <div class="field">
           <label for="f-postcode">Postcode</label>
-          <input id="f-postcode" name="postcode" autocomplete="postal-code" required>
+          <input id="f-postcode" name="postcode" autocomplete="postal-code" autocapitalize="characters" required aria-describedby="e-postcode" data-error="Enter your postcode, like GU1 4AA">
+          <p class="error" id="e-postcode"></p>
         </div>
         <div class="field full">
           <label for="f-job">Type of job</label>
@@ -130,12 +159,13 @@
           </select>
         </div>
         <div class="field full">
-          <label for="f-details">About the job</label>
-          <textarea id="f-details" name="details" placeholder="Rough sizes, materials, and when you'd like it done"></textarea>
+          <label for="f-details">About the job <span class="optional">(optional)</span></label>
+          <p class="hint" id="h-details">Rough sizes, materials, and when you'd like it done.</p>
+          <textarea id="f-details" name="details" aria-describedby="h-details"></textarea>
         </div>
         <input class="hp" type="text" name="_gotcha" tabindex="-1" autocomplete="off" aria-hidden="true">
-        <div class="field full">
-          <button class="btn btn-primary" type="submit">Request a quote</button>
+        <div class="form-actions">
+          <button class="btn btn-primary" type="submit"><svg class="icon" aria-hidden="true"><use href="#i-quote"/></svg>Request a quote</button>
         </div>
         <p class="form-note">We only use your details to reply about your job.</p>
       </form>
@@ -157,5 +187,52 @@
   </div>
 </footer>
 
+<nav class="mobile-bar" aria-label="Quick contact">
+  <a class="btn btn-secondary" href="tel:{{phone_link}}"><svg class="icon" aria-hidden="true"><use href="#i-phone"/></svg>Call</a>
+  <a class="btn btn-primary" href="#quote">Get a quote</a>
+</nav>
+
+<script>
+(function () {
+  var form = document.getElementById("quote-form");
+  if (!form) return;
+  var summary = document.getElementById("error-summary");
+  var list = document.getElementById("error-list");
+  function smooth() { return window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth"; }
+  var rules = {
+    "f-name": function (v) { return v.trim().length > 0; },
+    "f-phone": function (v) { return v.replace(/\D/g, "").length >= 10; },
+    "f-email": function (v) { return v.trim() === "" || /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v.trim()); },
+    "f-postcode": function (v) { return /^[A-Z]{1,2}\d[A-Z\d]?\s*\d[A-Z]{2}$/i.test(v.trim()); }
+  };
+  function check(input) {
+    var ok = rules[input.id](input.value);
+    var msg = document.getElementById(input.getAttribute("aria-describedby"));
+    input.setAttribute("aria-invalid", ok ? "false" : "true");
+    msg.textContent = ok ? "" : input.dataset.error;
+    return ok;
+  }
+  Object.keys(rules).forEach(function (id) {
+    var input = document.getElementById(id);
+    input.addEventListener("blur", function () { if (input.value || input.required) check(input); });
+    input.addEventListener("input", function () { if (input.getAttribute("aria-invalid") === "true") check(input); });
+  });
+  form.addEventListener("submit", function (e) {
+    var failed = Object.keys(rules).map(function (id) { return document.getElementById(id); }).filter(function (i) { return !check(i); });
+    if (!failed.length) { summary.hidden = true; return; }
+    e.preventDefault();
+    list.innerHTML = "";
+    failed.forEach(function (i) {
+      var li = document.createElement("li"), a = document.createElement("a");
+      a.href = "#" + i.id; a.textContent = i.dataset.error;
+      a.addEventListener("click", function (ev) { ev.preventDefault(); i.focus({ preventScroll: true }); i.scrollIntoView({ block: "start", behavior: smooth() }); });
+      li.appendChild(a); list.appendChild(li);
+    });
+    summary.hidden = false;
+    summary.focus({ preventScroll: true });
+    summary.scrollIntoView({ block: "start", behavior: smooth() });
+  });
+})();
+</script>
 </body>
 </html>

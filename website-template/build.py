@@ -16,6 +16,7 @@ import re
 import shutil
 import sys
 from pathlib import Path
+from urllib.parse import quote_plus
 
 HERE = Path(__file__).resolve().parent
 
@@ -48,12 +49,39 @@ def build_sections(cfg):
         for g in cfg["gallery"]
     )
 
+    def stars(n):
+        n = int(round(float(n)))
+        icons = '<svg aria-hidden="true"><use href="#i-star"/></svg>' * n
+        return '<span class="stars" role="img" aria-label="{} out of 5 stars">{}</span>'.format(n, icons)
+
     reviews = "\n".join(
-        "        <blockquote><p>{}</p><cite>{}{}</cite></blockquote>".format(
+        "        <blockquote>{}<p>{}</p><cite>{}{}</cite></blockquote>".format(
+            stars(r.get("stars", 5)),
             esc(r["text"]), esc(r["name"]), ", " + esc(r["location"]) if r.get("location") else ""
         )
         for r in cfg["reviews"]
     )
+
+    trust_points = "\n".join(
+        '        <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg>{}</li>'.format(esc(t))
+        for t in cfg.get("trust_points", [])
+    )
+
+    if cfg.get("map_query"):
+        map_html = (
+            '      <div class="map"><iframe title="Map of the area we cover around {}" '
+            'src="https://www.google.com/maps?q={}&amp;output=embed" loading="lazy" '
+            'referrerpolicy="no-referrer-when-downgrade"></iframe></div>'
+        ).format(esc(cfg["town"]), quote_plus(cfg["map_query"]))
+    else:
+        map_html = ""
+
+    if cfg.get("google_reviews_url"):
+        reviews_link = '      <a class="reviews-link" href="{}">Read all our reviews on Google</a>'.format(
+            esc(cfg["google_reviews_url"])
+        )
+    else:
+        reviews_link = ""
 
     steps = "\n".join(
         "        <li><h3>{}</h3><p>{}</p></li>".format(esc(s["title"]), esc(s["text"]))
@@ -64,8 +92,6 @@ def build_sections(cfg):
     job_options = "\n".join("            <option>{}</option>".format(esc(s["name"])) for s in cfg["services"])
 
     links = []
-    if cfg.get("google_reviews_url"):
-        links.append('<a href="{}">Read our Google reviews</a>'.format(esc(cfg["google_reviews_url"])))
     if cfg.get("checkatrade_url"):
         links.append('<a href="{}">Checkatrade profile</a>'.format(esc(cfg["checkatrade_url"])))
     if cfg.get("facebook_url"):
@@ -82,9 +108,13 @@ def build_sections(cfg):
     rating = cfg.get("review_rating")
     count = cfg.get("review_count")
     if rating and count:
-        review_summary = "Rated {} out of 5 from {} Google reviews.".format(rating, count)
+        rating_block = '      <p class="rating">{}<span>{} from {} Google reviews</span></p>'.format(
+            stars(rating), esc(rating), esc(count)
+        )
+        review_intro = "Rated {} out of 5 by customers on Google.".format(rating)
     else:
-        review_summary = "Reviews from recent customers."
+        rating_block = ""
+        review_intro = "Reviews from recent customers."
 
     schema = {
         "@context": "https://schema.org",
@@ -119,8 +149,12 @@ def build_sections(cfg):
         "services_intro": esc(cfg["services_intro"]),
         "services": services,
         "gallery": gallery,
-        "review_summary": esc(review_summary),
+        "rating_block": rating_block,
+        "trust_points": trust_points,
+        "review_intro": esc(review_intro),
         "reviews": reviews,
+        "reviews_link": reviews_link,
+        "map": map_html,
         "steps": steps,
         "area_intro": esc(cfg["area_intro"]),
         "areas": areas,
